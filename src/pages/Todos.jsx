@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react';
 
 import { TodoList } from '../components/TodoList';
-import { getTodos, addTodo, removeTodo } from '../API/firebase.servise';
+import { getTodos, addTodo, removeTodo } from '../API/firebase.service';
 import { collection, addDoc } from 'firebase/firestore/lite';
 import { db } from '../firebase';
 
