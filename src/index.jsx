@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import { createRoot } from 'react-dom/client';
 
-import App from './App';
+import { db } from './firebase';
+import { App } from './App';
+
+export const Context = createContext(null);
 
 const root = createRoot(document.getElementById('root'));
-root.render(<React.StrictMode><App /></React.StrictMode>);
+root.render(
+    <Context.Provider value={{
+        db,
+    }}>
+        <React.StrictMode><App /></React.StrictMode>
+    </Context.Provider>
+);
