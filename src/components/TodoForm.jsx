@@ -9,7 +9,7 @@ export const TodoForm = () => {
   const addnewTodo = (e)  => {    
     e.preventDefault();
     if(!todo.name || !todo.body) {
-        return
+      return
     }
     const newTodo = {
       ...todo
@@ -22,22 +22,20 @@ export const TodoForm = () => {
     <div>    
         <form>
             <TextField 
-                id="outlined-basic" 
-                label="Outlined" 
-                variant="outlined"
-                value={todo.name}
-                onChange={e => setTodo({...todo, name: e.target.value})}
-                type="text" 
-                placeholder="Todo name"
+              label="Outlined" 
+              variant="outlined"
+              value={todo.name}
+              onChange={e => setTodo({...todo, name: e.target.value})}
+              type="text" 
+              placeholder="Todo name"
             />
             <TextField 
-                id="outlined-basic" 
-                label="Outlined" 
-                variant="outlined"
-                value={todo.body}
-                onChange={e => setTodo({...todo, body: e.target.value})}
-                type="text"
-                placeholder="Todo description"
+              label="Outlined" 
+              variant="outlined"
+              value={todo.body}
+              onChange={e => setTodo({...todo, body: e.target.value})}
+              type="text"
+              placeholder="Todo description"
             />
             <Button onClick={addnewTodo}>Add todo</Button>
         </form>

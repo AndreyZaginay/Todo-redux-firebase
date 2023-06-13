@@ -5,7 +5,6 @@ import { getTodos } from '../API/todo.firebase';
 import { TodoForm } from '../components/TodoForm';
 
 export const Todos = () => {
-
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {

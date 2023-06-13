@@ -6,7 +6,7 @@ export const TodoList = ({ todos }) => {
   return (
     <div>
         {todos.map((todo, id) => 
-            <TodoItem key={id} todo={todo}/>
+          <TodoItem key={id} todo={todo}/>
         )}
     </div>
   )
