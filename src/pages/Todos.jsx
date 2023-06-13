@@ -1,21 +1,18 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { TodoList } from '../components/TodoList';
-import { getTodos, addTodo, removeTodo } from '../API/firebase.service';
-import { collection, addDoc } from 'firebase/firestore/lite';
-import { db } from '../firebase';
+import { getTodos, addTodo, removeTodo } from '../API/todo.firebase';
 
 export const Todos = () => {
 
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    getTodos().then(r => setTodos(r));  
+    getTodos().then(todos => setTodos(todos));  
   }, [])
     
   return (
     <>
-    <button onClick={() => remove()}>asd</button>
     <TodoList todos={todos}/>
     </>
   )
