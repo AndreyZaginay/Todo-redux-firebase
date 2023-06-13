@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
 import { TodoList } from '../components/TodoList';
-import { getTodos, addTodo, removeTodo } from '../API/todo.firebase';
+import { getTodos } from '../API/todo.firebase';
+import { TodoForm } from '../components/TodoForm';
 
 export const Todos = () => {
 
@@ -13,7 +14,8 @@ export const Todos = () => {
     
   return (
     <>
-    <TodoList todos={todos}/>
+      <TodoForm/>
+      <TodoList todos={todos}/>
     </>
   )
 }

@@ -8,9 +8,5 @@ export const Context = createContext(null);
 
 const root = createRoot(document.getElementById('root'));
 root.render(
-    <Context.Provider value={{
-        db,
-    }}>
-        <React.StrictMode><App /></React.StrictMode>
-    </Context.Provider>
+    <React.StrictMode><App /></React.StrictMode>
 );

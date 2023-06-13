@@ -1,9 +1,10 @@
 import React from 'react';
 import { BrowserRouter } from "react-router-dom";
-import { Todos } from './pages/Todos';
+
+import { AppRouter } from './components/AppRouter';
 
 export const App = () => (
-    // <BrowserRouter>
-    // </BrowserRouter>
-    <Todos/>
+    <BrowserRouter>
+        <AppRouter/>
+   </BrowserRouter> 
 );

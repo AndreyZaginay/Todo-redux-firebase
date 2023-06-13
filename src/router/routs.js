@@ -1,13 +1,13 @@
 import { TodoIdPage } from "../pages/TodoIdPage";
 import { Todos } from "../pages/Todos";
 
-export const publicRoutes = [
-    {
-        path: 'login',
-        component: Login,
-        name: 'Login'
-    },
-];
+// export const publicRoutes = [
+//     {
+//         path: 'login',
+//         component: Login,
+//         name: 'Login'
+//     },
+// ];
 export const privateRoutes = [
     {
         path: 'todos',
