@@ -1,0 +1,13 @@
+.todoItem {
+    border: 2px solid rgb(85, 141, 233);
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.todoItem span {
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+}

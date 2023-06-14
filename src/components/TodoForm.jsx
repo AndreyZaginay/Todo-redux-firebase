@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import { Button, TextField } from "@mui/material";
 
 import { addTodo } from "../API/todo.firebase";
+import '../assets/css/todoForm';
 
 export const TodoForm = () => {
   const [todo, setTodo] = useState({ name: '', body: ''});
@@ -22,7 +23,7 @@ export const TodoForm = () => {
     <div>    
         <form>
             <TextField 
-              label="Outlined" 
+              label="Todo name" 
               variant="outlined"
               value={todo.name}
               onChange={e => setTodo({...todo, name: e.target.value})}
@@ -30,14 +31,14 @@ export const TodoForm = () => {
               placeholder="Todo name"
             />
             <TextField 
-              label="Outlined" 
+              label="Todo description" 
               variant="outlined"
               value={todo.body}
               onChange={e => setTodo({...todo, body: e.target.value})}
               type="text"
               placeholder="Todo description"
             />
-            <Button onClick={addnewTodo}>Add todo</Button>
+            <Button variant="contained" onClick={addnewTodo}>Add todo</Button>
         </form>
     </div>
     )

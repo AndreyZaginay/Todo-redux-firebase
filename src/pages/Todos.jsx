@@ -12,9 +12,10 @@ export const Todos = () => {
   }, [])
     
   return (
-    <>
+    <div className='App'>
+      <h1 style={{textAlign: 'center'}}>TodoList</h1>
       <TodoForm/>
       <TodoList todos={todos}/>
-    </>
+    </div>
   )
 }

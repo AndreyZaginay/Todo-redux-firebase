@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
+import '../assets/css/todoItem';
 import { removeTodo } from '../API/todo.firebase';
 
 export const TodoItem = ({ todo }) => {
@@ -16,11 +17,12 @@ export const TodoItem = ({ todo }) => {
   }
     
   return (
-    <>
-      <h4>{ name }</h4>
-      <p>{ body }</p>
-      <Button variant="contained" onClick={() => openTodoPage(id)}>Todo page</Button>
-      <Button variant="contained" onClick={() => remove(id)}>Remove</Button>
-    </>
+    <div className='todoItem'>
+      <span>{ name }</span>
+      <div className='btns-container'>
+        <Button variant="contained" onClick={() => openTodoPage(id)}>Todo page</Button>
+        <Button variant="contained" onClick={() => remove(id)}>Remove</Button>
+      </div>
+    </div>
   )
 }
