@@ -1,5 +1,5 @@
-import { add, getTodos } from "../../API/todo.firebase"
-import { addTodoAction, addTodoError, addTodoSuccess, todosFetching, todosFetchingError, todosFetchingSuccess } from "../reducers/todosSlice";
+import { add, getTodos, remove } from "../../API/todo.firebase"
+import { addTodoAction, addTodoError, addTodoSuccess, removeTodoAction, removeTodoError, removeTodoSuccess, todosFetching, todosFetchingError, todosFetchingSuccess } from "../reducers/todosSlice";
 
 export const fetchTodos = () => (dispatch) => {
     try {
@@ -17,5 +17,15 @@ export const addTodo = (todo) => (dispatch) => {
         add(todo).then(todoId => dispatch(addTodoSuccess({ id: todoId, ...todo })));
     } catch (e) {
         dispatch(addTodoError(e.message));
+    }
+}
+
+export const removeTodo = (todoId) => (dispatch) => {
+    try {
+        dispatch(removeTodoAction());
+        remove(todoId);
+        dispatch(removeTodoSuccess(todoId));
+    } catch (e) {
+        dispatch(removeTodoError(e.message));
     }
 }
