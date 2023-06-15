@@ -17,10 +17,10 @@ export const getTodoById = async (id) => {
     return await getDoc(docRef(id));
 }
 
-export const addTodo = async(todo) => {
-   await addDoc(todosCollectionRef, todo);
+export const add = async (todo) => {
+    return await addDoc(todosCollectionRef, todo).then(docRef => docRef.id);
 }
 
-export const removeTodo = async (todoId) => {
+export const remove = async (todoId) => {
     await deleteDoc(docRef(todoId));
 }

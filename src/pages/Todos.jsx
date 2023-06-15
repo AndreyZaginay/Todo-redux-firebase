@@ -6,12 +6,10 @@ import { TodoForm } from '../components/TodoForm';
 import { fetchTodos } from '../store/actions/todosActions';
 
 export const Todos = () => {
-  // const [todos, setTodos] = useState([]);
   const dispatch = useDispatch();
   const { todos } = useSelector(state => state.todos);
 
   useEffect(() => {
-    // getTodos().then(todos => setTodos(todos));
     dispatch(fetchTodos());
   }, [])
     

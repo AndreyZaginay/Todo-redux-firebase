@@ -1,21 +1,23 @@
 import React, {useState} from "react";
 import { Button, TextField } from "@mui/material";
 
-import { addTodo } from "../API/todo.firebase";
 import '../assets/css/todoForm';
+import { useDispatch } from "react-redux";
+import { addTodo } from "../store/actions/todosActions";
 
 export const TodoForm = () => {
   const [todo, setTodo] = useState({ name: '', body: ''});
+  const dispatch = useDispatch();
 
   const addnewTodo = (e)  => {    
-    e.preventDefault();
+    e.preventDefault(); 
     if(!todo.name || !todo.body) {
-      return
+      return;
     }
     const newTodo = {
       ...todo
     }
-    addTodo(newTodo);
+    dispatch(addTodo(newTodo))
     setTodo({ name: '', body: '' });
   }
 

@@ -21,10 +21,30 @@ export const todosSlice = createSlice({
         todosFetchingError(state, action) {
             state.isLoading = false;
             state.error = action.payload;
+        },
+        addTodoAction(state) {
+            state.isLoading = true;
+        },
+        addTodoSuccess(state, action) {
+            state.isLoading = false;
+            state.todos.push(action.payload);
+            state.error = null;
+        },
+        addTodoError(state, action) {
+            state.isLoading = false;
+            state.error = action.payload;
         }
+
     }
 }) 
 
-export const { todosFetching, todosFetchingSuccess, todosFetchingError } = todosSlice.actions;
+export const { 
+    todosFetching, 
+    todosFetchingSuccess, 
+    todosFetchingError, 
+    addTodoAction, 
+    addTodoError, 
+    addTodoSuccess 
+} = todosSlice.actions;
 
 export default todosSlice.reducer;
