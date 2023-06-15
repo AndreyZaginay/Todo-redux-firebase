@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { TodoList } from '../components/TodoList';
-import { getTodos } from '../API/todo.firebase';
 import { TodoForm } from '../components/TodoForm';
+import { fetchTodos } from '../store/actions/todosActions';
 
 export const Todos = () => {
-  const [todos, setTodos] = useState([]);
+  // const [todos, setTodos] = useState([]);
+  const dispatch = useDispatch();
+  const { todos } = useSelector(state => state.todos);
 
   useEffect(() => {
-    getTodos().then(todos => setTodos(todos));  
+    // getTodos().then(todos => setTodos(todos));
+    dispatch(fetchTodos());
   }, [])
     
   return (
