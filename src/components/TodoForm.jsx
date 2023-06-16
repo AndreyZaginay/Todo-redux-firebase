@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import { Button, TextField } from "@mui/material";
+import { useDispatch } from "react-redux";
 
 import '../assets/css/todoForm';
-import { useDispatch } from "react-redux";
 import { addTodo } from "../store/actions/todosActions";
 
 export const TodoForm = () => {
@@ -15,9 +15,11 @@ export const TodoForm = () => {
       return;
     }
     const newTodo = {
-      ...todo
+      name: todo.name.trim(),
+      body: todo.body.trim(),
+      isComplete: false
     }
-    dispatch(addTodo(newTodo))
+    dispatch(addTodo(newTodo));
     setTodo({ name: '', body: '' });
   }
 

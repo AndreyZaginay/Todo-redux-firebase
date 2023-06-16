@@ -1,5 +1,18 @@
-import { add, getTodos, remove } from "../../API/todo.firebase"
-import { addTodoAction, addTodoError, addTodoSuccess, removeTodoAction, removeTodoError, removeTodoSuccess, todosFetching, todosFetchingError, todosFetchingSuccess } from "../reducers/todosSlice";
+import { add, getTodos, remove, update } from "../../API/todo.firebase"
+import { 
+    addTodoAction,
+    addTodoError, 
+    addTodoSuccess, 
+    removeTodoAction, 
+    removeTodoError, 
+    removeTodoSuccess, 
+    todosFetching, 
+    todosFetchingError, 
+    todosFetchingSuccess, 
+    updateTodoAction, 
+    updateTodoError, 
+    updateTodoSuccess 
+} from "../reducers/todosSlice";
 
 export const fetchTodos = () => (dispatch) => {
     try {
@@ -27,5 +40,15 @@ export const removeTodo = (todoId) => (dispatch) => {
         dispatch(removeTodoSuccess(todoId));
     } catch (e) {
         dispatch(removeTodoError(e.message));
+    }
+}
+
+export const updateTodo = (id, isComplete) => (dispatch) => {
+    try {
+        dispatch(updateTodoAction());
+        update(id, isComplete);
+        dispatch(updateTodoSuccess({id, ...isComplete}));
+    } catch (e) {
+        dispatch(updateTodoError(e.message));
     }
 }

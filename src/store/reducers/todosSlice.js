@@ -45,6 +45,19 @@ export const todosSlice = createSlice({
         removeTodoError(state, action) {
             state.isLoading = false;
             state.error = action.payload;
+        },
+        updateTodoAction(state) {
+            state.isLoading = true;
+        },
+        updateTodoSuccess(state, action) {
+            state.isLoading = false;
+            const index = state.todos.indexOf(action.payload.id);
+            state.todos[index].isComplete = action.payload.isComplete;
+            state.error = null;
+        },
+        updateTodoError(state, action) {
+            state.isLoading = false;
+            state.error = action.payload;
         }
     }
 }) 
@@ -58,7 +71,10 @@ export const {
     addTodoSuccess,
     removeTodoAction,
     removeTodoSuccess,
-    removeTodoError
+    removeTodoError,
+    updateTodoAction,
+    updateTodoSuccess,
+    updateTodoError
 } = todosSlice.actions;
 
 export default todosSlice.reducer;

@@ -11,3 +11,8 @@
     align-items: center;
     padding-left: 8px;
 }
+
+/* .todoItem .btns-container {
+    display: grid;
+    grid-template-columns: 10% 45% 45%;
+} */

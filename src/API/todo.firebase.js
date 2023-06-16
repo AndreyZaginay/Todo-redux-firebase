@@ -1,4 +1,4 @@
-import { collection, getDocs, addDoc, doc, deleteDoc, getDoc } from 'firebase/firestore/lite';
+import { collection, getDocs, addDoc, doc, deleteDoc, getDoc, updateDoc } from 'firebase/firestore/lite';
 
 import { db } from "../firebase";
 
@@ -19,6 +19,10 @@ export const getTodoById = async (id) => {
 
 export const add = async (todo) => {
     return await addDoc(todosCollectionRef, todo).then(docRef => docRef.id);
+}
+
+export const update = async (id, todo) => {
+    await updateDoc(docRef(id), todo);
 }
 
 export const remove = async (todoId) => {
