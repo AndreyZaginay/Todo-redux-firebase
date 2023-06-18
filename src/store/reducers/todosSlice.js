@@ -51,7 +51,8 @@ export const todosSlice = createSlice({
         },
         updateTodoSuccess(state, action) {
             state.isLoading = false;
-            const index = state.todos.indexOf(action.payload.id);
+            const todo = state.todos.find(({ id }) => id === action.payload.id);
+            const index = state.todos.indexOf(todo);
             state.todos[index].isComplete = action.payload.isComplete;
             state.error = null;
         },

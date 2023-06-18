@@ -9,12 +9,11 @@ const docRef = (id) => {
 
 export const getTodos = async () => {
     const todosSnapshot = await getDocs(todosCollectionRef);
-    const todoList = todosSnapshot.docs.map(doc => ({id: doc.id, ...doc.data()}));
-    return todoList;
-}
+    return todosSnapshot.docs.map(doc => ({id: doc.id, ...doc.data()}));
+}   
 
-export const getTodoById = async (id) => {
-    return await getDoc(docRef(id));
+export const getTodoById = (id) => {
+    return getDoc(docRef(id));
 }
 
 export const add = async (todo) => {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Checkbox } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -22,7 +22,7 @@ export const TodoItem = ({ todo }) => {
   return (
     <div className='todoItem'>
       <span>{ name }</span>
-      <Checkbox type='checkbox' defaultChecked={isComplete} onChange={() => changeTodoCompletion()}/>
+      <Checkbox checked={isComplete} onChange={() => changeTodoCompletion()}/>
       <div className='btns-container'>
         <Button variant="contained" onClick={() => openTodoPage(id)}>Todo page</Button>
         <Button variant="contained" onClick={() => dispatch(removeTodo(id))}>Remove</Button>
