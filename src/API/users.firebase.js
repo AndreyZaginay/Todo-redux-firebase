@@ -1,4 +1,4 @@
-import { collection, getDocs, query, where } from "firebase/firestore/lite";
+import { addDoc, collection, getDoc, getDocs, query, where } from "firebase/firestore/lite";
 import { db } from "../firebase";
 
 const usersCollectionRef = collection(db, 'users');
@@ -27,4 +27,12 @@ export const getUserByEmail = async (email) => {
         return;
     }
     return {id: userWithEmail.id, ...userWithEmail.data()};
+}
+
+export const createUser = async (user) => {
+    return await addDoc(usersCollectionRef, user).then(docRef => docRef.id);
+}
+
+export const getUserById = async (id) => {
+    return getDoc(docRef(id));
 }

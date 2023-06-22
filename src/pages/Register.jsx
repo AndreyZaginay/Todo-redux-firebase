@@ -2,9 +2,7 @@ import { Button, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-
-
-export const Login = () => {
+export const Register = () => {
   const [credentials, setCredentials] = useState({email: '', password: ''});
   const router = useNavigate();
 
@@ -27,10 +25,9 @@ export const Login = () => {
           onChange={e => setCredentials({...credentials, password: e.target.value})}
           placeholder="Password"
         />
-        <Button>Login</Button>
+        <Button>Register</Button>
       </form>
-      <div></div>
-      <p onClick={() => router('/register')}>To register</p>
+      <p>Already have an account?<strong onClick={() => router('login')}>Login</strong></p>
     </div>
   )
 }
