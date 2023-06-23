@@ -8,23 +8,26 @@ import {
     registerError
 } from "../reducers/authSlice";
 
-export const authLogin = (credentials) => (dispatch) => {
+export const authLogin = (credentials) => async (dispatch) => {
+    // dispatch(loginAction());
+    // login(credentials)
+    //     .then(user => dispatch(loginSuccess(user)))
+    //     .catch(error => dispatch(loginError(error.message)))
     try {
         dispatch(loginAction());
-        const response = login(credentials);
-        console.log(response);
-        response.then(user => dispatch(loginSuccess(user)));
-    } catch (e) {
-        dispatch(loginError(e.message));
+        const user = await login(credentials);
+        dispatch(loginSuccess(user));
+    } catch (error) {
+        dispatch(loginError(error.message));
     }
 }
 
-export const authRegister = (credentials) => (dispatch) => {
+export const authRegister = (credentials) => async (dispatch) => {
     try {
         dispatch(registerAction());
-        const response = register(credentials);
-        response.then(user => dispatch(registerSuccess(user)));
-    } catch (e) {
-        dispatch(registerError(e.message));
+        const userId = await register(credentials);
+        dispatch(registerSuccess({id: userId, ...credentials}));
+    } catch (error) {
+        dispatch(registerError(error.message));
     }
 }
