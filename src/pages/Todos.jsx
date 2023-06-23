@@ -8,9 +8,11 @@ import { fetchTodos } from '../store/actions/todosActions';
 export const Todos = () => {
   const dispatch = useDispatch();
   const { todos } = useSelector(state => state.todos);
+  const { user } = useSelector(state => state.auth);
 
   useEffect(() => {
     dispatch(fetchTodos());
+    console.log(user);
   }, [])
     
   return (

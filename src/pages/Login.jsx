@@ -1,12 +1,20 @@
 import { Button, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { authLogin } from '../store/actions/authActions';
 
 
 
 export const Login = () => {
+  const dispatch = useDispatch();
   const [credentials, setCredentials] = useState({email: '', password: ''});
   const router = useNavigate();
+
+  const login = (e) => {
+    e.preventDefault();
+    dispatch(authLogin(credentials));
+  }
 
   return (
     <div>
@@ -16,7 +24,7 @@ export const Login = () => {
           variant="outlined"
           value={credentials.email}
           onChange={e => setCredentials({...credentials, email: e.target.value})}
-          type="text"
+          type="email"
           placeholder="Email"
         />
         <TextField
@@ -27,10 +35,14 @@ export const Login = () => {
           onChange={e => setCredentials({...credentials, password: e.target.value})}
           placeholder="Password"
         />
-        <Button>Login</Button>
+        <Button
+          variant="contained"
+          disabled={!credentials.email || !credentials.password}
+          onClick={(e) => login(e)}
+        >Login</Button>
       </form>
       <div></div>
-      <p onClick={() => router('/register')}>To register</p>
+      <p><strong onClick={() => router('/register')}>To register</strong></p>
     </div>
   )
 }
