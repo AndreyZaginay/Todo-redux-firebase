@@ -14,41 +14,42 @@ import {
     updateTodoSuccess 
 } from "../reducers/todosSlice";
 
-export const fetchTodos = () => (dispatch) => {
+export const fetchTodos = () => async (dispatch) => {
     try {
         dispatch(todosFetching());
-        const response = getTodos();
-        response.then(todos => dispatch(todosFetchingSuccess(todos)));
-    } catch (e) {
-        dispatch(todosFetchingError(e.message));
+        const todos = await getTodos();
+        dispatch(todosFetchingSuccess(todos));
+    } catch (error) {
+        dispatch(todosFetchingError(error.message));
     }
 }
 
-export const addTodo = (todo) => (dispatch) => {
+export const addTodo = (todo) => async (dispatch) => {
     try {
         dispatch(addTodoAction());
-        add(todo).then(todoId => dispatch(addTodoSuccess({ id: todoId, ...todo })));
-    } catch (e) {
-        dispatch(addTodoError(e.message));
+        const todoId = await add(todo);
+        dispatch(addTodoSuccess({ id: todoId, ...todo }));
+    } catch (error) {
+        dispatch(addTodoError(error.message));
     }
 }
 
-export const removeTodo = (todoId) => (dispatch) => {
+export const removeTodo = (todoId) => async (dispatch) => {
     try {
         dispatch(removeTodoAction());
-        remove(todoId);
+        await remove(todoId);
         dispatch(removeTodoSuccess(todoId));
-    } catch (e) {
-        dispatch(removeTodoError(e.message));
+    } catch (error) {
+        dispatch(removeTodoError(error.message));
     }
 }
 
-export const updateTodo = (id, isComplete) => (dispatch) => {
+export const updateTodo = (id, isComplete) => async (dispatch) => {
     try {
         dispatch(updateTodoAction());
-        update(id, isComplete);
-        dispatch(updateTodoSuccess({id, ...isComplete}));
-    } catch (e) {
-        dispatch(updateTodoError(e.message));
+        await update(id, isComplete);
+        dispatch(updateTodoSuccess({ id, ...isComplete }));
+    } catch (error) {
+        dispatch(updateTodoError(error.message));
     }
 }

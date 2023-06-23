@@ -12,7 +12,6 @@ export const Todos = () => {
 
   useEffect(() => {
     dispatch(fetchTodos());
-    console.log(user);
   }, [])
     
   return (

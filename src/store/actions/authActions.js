@@ -26,7 +26,7 @@ export const authRegister = (credentials) => async (dispatch) => {
     try {
         dispatch(registerAction());
         const userId = await register(credentials);
-        dispatch(registerSuccess({id: userId, ...credentials}));
+        dispatch(registerSuccess({ id: userId, ...credentials }));
     } catch (error) {
         dispatch(registerError(error.message));
     }
