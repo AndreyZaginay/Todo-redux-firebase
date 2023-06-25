@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { TodoList } from '../components/TodoList';
 import { TodoForm } from '../components/TodoForm';
-import { fetchTodos } from '../store/actions/todosActions';
+import { fetchTodos } from '@store/actions/todosActions';
 
 export const Todos = () => {
   const dispatch = useDispatch();

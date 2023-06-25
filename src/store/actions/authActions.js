@@ -1,4 +1,4 @@
-import { login, register } from "../../API/auth.firebase";
+import { login, logout, register } from "../../API/auth.firebase";
 import {
     loginAction,
     loginSuccess,
@@ -23,6 +23,17 @@ export const authLogin = (credentials) => async (dispatch) => {
     }
 }
 
+export const authLoginUI = (loginUI) => async (dispatch) => {
+    try {
+        dispatch(loginAction());
+        const { user } = await loginUI();
+        const { email } = user;
+        dispatch(loginSuccess({ email: email }));
+    } catch (error) {
+        dispatch(loginError(error.message));
+    }
+}
+
 export const authRegister = (credentials) => async (dispatch) => {
     try {
         dispatch(registerAction());
@@ -33,9 +44,10 @@ export const authRegister = (credentials) => async (dispatch) => {
     }
 }
 
-export const authLogout = () => (dispatch) => {
+export const authLogout = () => async (dispatch) => {
    try {
         dispatch(logoutAction());
+        await logout();
         dispatch(loginSuccess());
    } catch (error) {
         dispatch(loginError(error.message));

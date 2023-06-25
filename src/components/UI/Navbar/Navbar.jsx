@@ -1,8 +1,9 @@
-import { AppBar, Button, Grid, Toolbar, Typography} from '@mui/material';
 import React from 'react';
+import { AppBar, Button, Grid, Toolbar, Typography} from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { authLogout } from '../../../store/actions/authActions';
+
+import { authLogout } from '@store/actions/authActions';
 
 
 
@@ -17,10 +18,11 @@ export const Navbar = () => {
             Todos
           </Typography>
           <Grid container justifyContent={'flex-end'}>
-          {user &&   
-          <Typography variant="h6" color="inherit" component="div">
-            {user.email}
-          </Typography>}
+            {user &&   
+              <Typography marginRight={'10px'} variant="h6" color="inherit" component="div">
+                {user.email}
+              </Typography>
+            }
             <div className='buttons'>
               {user 
               ? <Button onClick={() => dispatch(authLogout())} variant='contained'>Logout</Button>

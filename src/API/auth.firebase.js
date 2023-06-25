@@ -1,4 +1,8 @@
-import { createUser, getUserByEmail } from "./users.firebase"
+import { signOut } from "firebase/auth";
+import { createUser, getUserByEmail } from "./users.firebase";
+import { signInWithPopup } from 'firebase/auth';
+
+import { auth, googleProvider } from '../firebase';
 
 export const login = async (credentials) => {
     const user = await getUserByEmail(credentials.email);
@@ -13,4 +17,12 @@ export const register = async (credentials) => {
         throw Error('User already exists');
     }
     return await createUser(credentials)
+}
+
+export const loginWithGoogle = async () => {
+    return await signInWithPopup(auth, googleProvider);
+}
+
+export const logout = async () => {
+    await signOut(auth);
 }

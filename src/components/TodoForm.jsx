@@ -3,7 +3,7 @@ import { Button, TextField } from "@mui/material";
 import { useDispatch } from "react-redux";
 
 import '../assets/css/todoForm';
-import { addTodo } from "../store/actions/todosActions";
+import { addTodo } from "@store/actions/todosActions";
 
 export const TodoForm = () => {
   const [todo, setTodo] = useState({ name: '', body: ''});

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import '../assets/css/todoItem';
-import { removeTodo, updateTodo } from '../store/actions/todosActions';
+import { removeTodo, updateTodo } from '@store/actions/todosActions';
 
 export const TodoItem = ({ todo }) => {
   const router = useNavigate();
