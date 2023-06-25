@@ -6,7 +6,7 @@ import { auth, googleProvider } from '../firebase';
 
 export const login = async (credentials) => {
     const user = await getUserByEmail(credentials.email);
-    if (user && user.pass === credentials.pass) {
+    if (user && user.password === credentials.password) {
         return user;
     }
     throw new Error('Wrong email or password');}
