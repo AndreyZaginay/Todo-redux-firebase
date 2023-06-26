@@ -6,13 +6,13 @@
     margin-top: 10px;
 }
 
-.todoItem span {
+.todoItem .name-div {
     display: flex;
     align-items: center;
     padding-left: 8px;
+    width: 40%;
 }
 
-/* .todoItem .btns-container {
+.todoItem .btns-container {
     display: grid;
-    grid-template-columns: 10% 45% 45%;
-} */
+}

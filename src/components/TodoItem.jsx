@@ -17,8 +17,8 @@ export const TodoItem = ({ todo }) => {
   
   return (
     <div className='todoItem'>
-      <span>{ name }</span>
-      <Checkbox checked={isComplete} onChange={() => changeTodoCompletion()}/>
+      <div className='name-div'>{ name }</div>
+      <div>Complete:<Checkbox checked={isComplete} onChange={() => changeTodoCompletion()}/></div>
       <div className='btns-container'>
         <Button variant="contained" onClick={() => dispatch(removeTodo(id))}>Remove</Button>
       </div>
