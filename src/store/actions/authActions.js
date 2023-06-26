@@ -6,7 +6,8 @@ import {
     registerAction,
     registerSuccess,
     registerError,
-    logoutAction
+    logoutAction,
+    cleanErrorAction
 } from "../reducers/authSlice";
 
 export const authLogin = (credentials) => async (dispatch) => {
@@ -52,4 +53,8 @@ export const authLogout = () => async (dispatch) => {
    } catch (error) {
         dispatch(loginError(error.message));
    }
+}
+
+export const cleanError = () => (dispatch) => {
+    dispatch(cleanErrorAction());
 }

@@ -1,11 +1,12 @@
 import { Button, TextField } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { authLogin } from '@store/actions/authActions';
-import { authLoginUI } from '../store/actions/authActions';
+import { authLoginUI, cleanError } from '../store/actions/authActions';
 import { loginWithGoogle } from '../API/auth.firebase';
+import '../assets/css/formWrapper';
 
 export const Login = () => {
   const dispatch = useDispatch();
@@ -22,8 +23,13 @@ export const Login = () => {
     dispatch(authLoginUI(loginWithGoogle))
   }
 
+  useEffect(() => {
+    dispatch(cleanError());
+  }, []);
+
   return (
-    <div>
+    <div className='form-wrapper'>
+      <h2>Login</h2>
       <form>
         <TextField
           error={error ? true : false}
@@ -39,7 +45,7 @@ export const Login = () => {
           error={error ? true : false}
           label="Password"
           type='password' 
-          variant="outlined"
+          variant="outlined"  
           value={credentials.password}
           onChange={e => setCredentials({...credentials, password: e.target.value})}
           placeholder="Password"

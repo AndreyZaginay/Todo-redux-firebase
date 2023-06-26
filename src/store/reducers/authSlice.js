@@ -45,6 +45,9 @@ export const authSlice = createSlice({
         logoutError(state, action) {
             state.isLoading = false;
             state.error = action.payload;
+        },
+        cleanErrorAction(state) {
+            state.error = null;
         }
     }
 })
@@ -58,7 +61,8 @@ export const {
     registerError,
     logoutAction,
     logoutSuccess,
-    logoutError
+    logoutError,
+    cleanErrorAction
 } = authSlice.actions;
 
 export default authSlice.reducer;
