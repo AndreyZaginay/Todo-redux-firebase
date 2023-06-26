@@ -11,10 +11,6 @@ export const TodoItem = ({ todo }) => {
   const { name, isComplete, id } = todo;
   const dispatch = useDispatch();
 
-  const openTodoPage = (id) => {
-    router(`todo/${id}`);
-  }
-
   const changeTodoCompletion = () => {
     dispatch(updateTodo(id, { isComplete: !isComplete }));
   };
@@ -24,7 +20,6 @@ export const TodoItem = ({ todo }) => {
       <span>{ name }</span>
       <Checkbox checked={isComplete} onChange={() => changeTodoCompletion()}/>
       <div className='btns-container'>
-        <Button variant="contained" onClick={() => openTodoPage(id)}>Todo page</Button>
         <Button variant="contained" onClick={() => dispatch(removeTodo(id))}>Remove</Button>
       </div>
     </div>

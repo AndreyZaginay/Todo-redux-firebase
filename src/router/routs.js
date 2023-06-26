@@ -1,4 +1,3 @@
-import { TodoIdPage } from "../pages/TodoIdPage";
 import { Todos } from "../pages/Todos";
 import { Login } from "../pages/Login";
 import { Register } from "../pages/Register";
@@ -22,10 +21,4 @@ export const privateRoutes = [
         name: 'Todos',
         index: true
     },
-    {
-        path: 'todos/todo/:id',
-        component: TodoIdPage,
-        name: 'TodoIdPage'
-    },
-
 ];
