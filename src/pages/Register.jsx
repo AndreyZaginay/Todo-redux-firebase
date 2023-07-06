@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { authRegister } from '@store/actions/authActions';
-import { cleanError } from '../store/actions/authActions';
+import { cleanError } from '@store/actions/authActions';
 
 export const Register = () => {
   const [credentials, setCredentials] = useState({email: '', password: ''});

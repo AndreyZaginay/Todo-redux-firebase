@@ -4,14 +4,15 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { authLogin } from '@store/actions/authActions';
-import { authLoginUI, cleanError } from '../store/actions/authActions';
+import { authLoginUI, cleanError } from '@store/actions/authActions';
 import { loginWithGoogle } from '../API/auth.firebase';
 import '../assets/css/formWrapper';
 
 export const Login = () => {
   const dispatch = useDispatch();
   const [credentials, setCredentials] = useState({email: '', password: ''});
-  const {error} = useSelector(state => state.auth);
+  const { error } = useSelector(state => state.auth);
+  const { user } = useSelector(state => state.auth);
   const router = useNavigate();
 
   const login = (e) => {

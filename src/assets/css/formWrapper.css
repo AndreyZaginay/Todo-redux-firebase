@@ -13,3 +13,7 @@
     flex-direction: column;
     gap: 10px;
 }
+
+.form-wrapper p {
+    cursor: pointer;
+}
